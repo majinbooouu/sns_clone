@@ -1,16 +1,24 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sns_clone/test.dart';
+import 'package:sns_clone/authentication/repos/authentication_repo.dart';
+import 'package:sns_clone/authentication/views/sign_in_screen.dart';
+import 'package:sns_clone/post/views/test_post_screen.dart';
 
 final routerProvider = Provider(
   (ref) {
+    ref.watch(authStateProvider);
     return GoRouter(
-      initialLocation: TestScreen.routeURL,
+      initialLocation: SignInScreen.routeURL,
       routes: [
         GoRoute(
-          path: TestScreen.routeURL,
-          name: TestScreen.routeName,
-          builder: (context, state) => const TestScreen(),
+          path: SignInScreen.routeURL,
+          name: SignInScreen.routeName,
+          builder: (context, state) => const SignInScreen(),
+        ),
+        GoRoute(
+          path: TestHomeScreen.routeURL,
+          name: TestHomeScreen.routeName,
+          builder: (context, state) => const TestHomeScreen(),
         ),
         // GoRoute(
         //   path: MainNavigationScreen.routeURL,
