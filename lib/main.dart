@@ -23,17 +23,17 @@ class SnsClone extends ConsumerWidget {
       title: 'SNS Clone',
       theme: ThemeData(
         colorScheme: const ColorScheme(
-          primary: Colors.black, // 주요 작업 요소의 변형 색상
-          secondary: Colors.green, // 보조 작업 요소의 변형 색상
+          primary: Colors.black, // 주요 작업 요소의 변형 색상/ 주요 배경색
+          secondary: Colors.black, // 보조 작업 요소의 변형 색상
           background: Colors.white, // 배경색
           surface: Colors.grey, // 표면 색상
           error: Colors.red, // 오류 색상
-          onPrimary: Colors.white, // 주요 작업 요소 위의 텍스트 색상
+          onPrimary: Colors.white, // 주요 작업 요소 위의 텍스트 색상/ primary 위에 올라가는 색
           onSecondary: Colors.black, // 보조 작업 요소 위의 텍스트 색상
           onBackground: Colors.black, // 배경 위의 텍스트 색상
-          onSurface: Colors.grey, // 표면 위의 텍스트 색상
+          onSurface: Colors.grey, // 표면 위의 텍스트 색상/ 비활성화 됐을 때 색
           onError: Colors.white, // 오류 메시지 위의 텍스트 색상
-          brightness: Brightness.dark, // 밝은 테마 사용
+          brightness: Brightness.light, // 밝은 테마 사용
         ),
         scaffoldBackgroundColor: Colors.white,
         textTheme: const TextTheme(
@@ -88,12 +88,17 @@ class SnsClone extends ConsumerWidget {
           ),
           color: Colors.white, // 앱 바 배경색
           elevation: 0, // 앱 바 그림자 크기
+          foregroundColor: Colors.black,
+        ),
+        navigationBarTheme: const NavigationBarThemeData(
+          backgroundColor: Colors.white,
+          indicatorColor: Colors.transparent,
         ),
       ),
       darkTheme: ThemeData(
         colorScheme: ColorScheme(
           primary: Colors.black, // 주요 작업 요소의 변형 색상
-          secondary: Colors.green, // 보조 작업 요소의 변형 색상
+          secondary: Colors.white, // 보조 작업 요소의 변형 색상
           background: Colors.white, // 배경색
           surface: Colors.grey, // 표면 색상
           error: Colors.red, // 오류 색상
@@ -157,6 +162,10 @@ class SnsClone extends ConsumerWidget {
           ),
           color: Colors.grey.shade900,
           elevation: 0,
+        ),
+        navigationBarTheme: NavigationBarThemeData(
+          backgroundColor: Colors.grey.shade900,
+          indicatorColor: Colors.transparent,
         ),
       ),
     );

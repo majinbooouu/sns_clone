@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "91433447554",
-    "project_id": "majinbuu-sns-clone",
-    "storage_bucket": "majinbuu-sns-clone.appspot.com"
+    "project_number": "797225435979",
+    "project_id": "majinbuu-mood-clone",
+    "storage_bucket": "majinbuu-mood-clone.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:91433447554:android:9275876bb71008902bc49b",
+        "mobilesdk_app_id": "1:797225435979:android:031d00333a4b5c5123dece",
         "android_client_info": {
           "package_name": "com.example.sns_clone"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCppn4Y7nsM2UIK9-dvjmX60xcOlPt5chU"
+          "current_key": "AIzaSyBM4E2-2SIWWRA6aPDUsisaxFV2RFQk8IY"
         }
       ],
       "services": {

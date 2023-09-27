@@ -47,29 +47,29 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyC9iwHGdLxknqalLf0A3gswrjXkrI8M-fo',
-    appId: '1:91433447554:web:da153d872a8e6a352bc49b',
-    messagingSenderId: '91433447554',
-    projectId: 'majinbuu-sns-clone',
-    authDomain: 'majinbuu-sns-clone.firebaseapp.com',
-    storageBucket: 'majinbuu-sns-clone.appspot.com',
-    measurementId: 'G-TKDTY5LGCE',
+    apiKey: 'AIzaSyDOZnRKPoV3H4GhlfqWE4Ck7hG1yhxc4-o',
+    appId: '1:797225435979:web:fea9ff37393f1d6223dece',
+    messagingSenderId: '797225435979',
+    projectId: 'majinbuu-mood-clone',
+    authDomain: 'majinbuu-mood-clone.firebaseapp.com',
+    storageBucket: 'majinbuu-mood-clone.appspot.com',
+    measurementId: 'G-2SBJ78C4S3',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCppn4Y7nsM2UIK9-dvjmX60xcOlPt5chU',
-    appId: '1:91433447554:android:9275876bb71008902bc49b',
-    messagingSenderId: '91433447554',
-    projectId: 'majinbuu-sns-clone',
-    storageBucket: 'majinbuu-sns-clone.appspot.com',
+    apiKey: 'AIzaSyBM4E2-2SIWWRA6aPDUsisaxFV2RFQk8IY',
+    appId: '1:797225435979:android:031d00333a4b5c5123dece',
+    messagingSenderId: '797225435979',
+    projectId: 'majinbuu-mood-clone',
+    storageBucket: 'majinbuu-mood-clone.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDpZCR6fKS07kCdPMuef0RghIN-0ajEFpA',
-    appId: '1:91433447554:ios:538957e7e1716f522bc49b',
-    messagingSenderId: '91433447554',
-    projectId: 'majinbuu-sns-clone',
-    storageBucket: 'majinbuu-sns-clone.appspot.com',
+    apiKey: 'AIzaSyAUnVihYvbuX_U6HMWk0j5he7VDdN-v61s',
+    appId: '1:797225435979:ios:cebc1421842b524f23dece',
+    messagingSenderId: '797225435979',
+    projectId: 'majinbuu-mood-clone',
+    storageBucket: 'majinbuu-mood-clone.appspot.com',
     iosBundleId: 'com.example.snsClone',
   );
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sns_clone/authentication/view_models/sign_in_view_model.dart';
 
 class SignInScreen extends ConsumerStatefulWidget {
@@ -87,7 +88,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                   width: 380,
                   child: TextField(
                     style: TextStyle(
-                      color: Theme.of(context).primaryColor,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
@@ -133,8 +134,9 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                 SizedBox(
                   width: 380,
                   child: TextField(
+                    textAlignVertical: TextAlignVertical.center,
                     style: TextStyle(
-                      color: Theme.of(context).primaryColor,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                     controller: _passwordController,
                     keyboardType: TextInputType.emailAddress,
@@ -179,11 +181,16 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                 const SizedBox(
                   height: 25,
                 ),
-                Text(
-                  "MOOD 계정이 없으십니까?",
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                        color: Colors.blue,
-                      ),
+                GestureDetector(
+                  onTap: () {
+                    context.push("/signup");
+                  },
+                  child: Text(
+                    "MOOD 계정이 없으십니까?",
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          color: Colors.blue,
+                        ),
+                  ),
                 ),
                 const SizedBox(
                   height: 35,
