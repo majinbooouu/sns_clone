@@ -22,10 +22,10 @@ class SnsClone extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       title: 'SNS Clone',
       theme: ThemeData(
-        colorScheme: const ColorScheme(
+        colorScheme: ColorScheme(
           primary: Colors.black, // 주요 작업 요소의 변형 색상/ 주요 배경색
           secondary: Colors.black, // 보조 작업 요소의 변형 색상
-          background: Colors.white, // 배경색
+          background: Colors.grey.shade100, // 배경색
           surface: Colors.grey, // 표면 색상
           error: Colors.red, // 오류 색상
           onPrimary: Colors.white, // 주요 작업 요소 위의 텍스트 색상/ primary 위에 올라가는 색
@@ -99,7 +99,7 @@ class SnsClone extends ConsumerWidget {
         colorScheme: ColorScheme(
           primary: Colors.black, // 주요 작업 요소의 변형 색상
           secondary: Colors.white, // 보조 작업 요소의 변형 색상
-          background: Colors.white, // 배경색
+          background: Colors.grey, // 배경색
           surface: Colors.grey, // 표면 색상
           error: Colors.red, // 오류 색상
           onPrimary: Colors.white, // 주요 작업 요소 위의 텍스트 색상

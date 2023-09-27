@@ -38,21 +38,23 @@ class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // actions: [
-        //   IconButton(
-        //     onPressed: () => ref
-        //         .read(darkmodeConfigProvider.notifier)
-        //         .setDarked(!ref.watch(darkmodeConfigProvider).dark),
-        //     icon: ref.watch(darkmodeConfigProvider).dark
-        //         ? const FaIcon(FontAwesomeIcons.moon)
-        //         : const FaIcon(FontAwesomeIcons.sun),
-        //   ),
-        // ],
-        title: const Text("🔥MOOD🔥"),
-        elevation: 0,
-        // backgroundColor: Theme.of(context).colorScheme.onPrimary,
-      ),
+      appBar: _selectedIndex == 0
+          ? AppBar(
+              // actions: [
+              //   IconButton(
+              //     onPressed: () => ref
+              //         .read(darkmodeConfigProvider.notifier)
+              //         .setDarked(!ref.watch(darkmodeConfigProvider).dark),
+              //     icon: ref.watch(darkmodeConfigProvider).dark
+              //         ? const FaIcon(FontAwesomeIcons.moon)
+              //         : const FaIcon(FontAwesomeIcons.sun),
+              //   ),
+              // ],
+              title: const Text("🔥MOOD🔥"),
+              elevation: 0,
+              // backgroundColor: Theme.of(context).colorScheme.onPrimary,
+            )
+          : null,
       body: Stack(
         children: [
           Offstage(

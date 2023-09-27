@@ -15,15 +15,19 @@ class WritePostNotifier extends AsyncNotifier<void> {
     _repository = ref.watch(writeRepo);
   }
 
-  Future<void> uploadPost(String description, BuildContext context) async {
+  Future<void> uploadPost(
+      String description, int emojiIndex, BuildContext context) async {
     // final user = ref.read(authRepoProvider).user;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      await _repository.savePost(PostModel(
-          description: description,
-          creatorUid: ref.read(authRepoProvider).user!.uid,
-          creator: "anonymous",
-          createdAt: DateTime.now().millisecondsSinceEpoch));
+      await _repository.savePost(
+        PostModel(
+            description: description,
+            creatorUid: ref.read(authRepoProvider).user!.uid,
+            creator: "anonymous",
+            createdAt: DateTime.now().millisecondsSinceEpoch,
+            emojiIndex: emojiIndex),
+      );
       context.pushReplacement("/home");
     });
   }
