@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sns_clone/commons/models/post_model.dart';
+import 'package:sns_clone/write/models/write_model.dart';
 
 class WriteRepository {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
@@ -18,7 +18,7 @@ class WriteRepository {
   }
 
   // create a post document
-  Future<void> savePost(PostModel data) async {
+  Future<void> savePost(WriteModel data) async {
     try {
       await _db.collection("posts").add(data.toJson());
       print("Post saved successfully.");
@@ -28,7 +28,7 @@ class WriteRepository {
   }
 
   // 모든 포스트 시간 순으로 받아오는 함수
-  Future<QuerySnapshot<Map<String, dynamic>>> fetchPhotos() {
+  Future<QuerySnapshot<Map<String, dynamic>>> fetchPosts() {
     return _db.collection("posts").orderBy("createdAt", descending: true).get();
   }
 

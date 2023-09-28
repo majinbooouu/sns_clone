@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sns_clone/authentication/repos/authentication_repo.dart';
 import 'package:sns_clone/write/view_models/write_view_model.dart';
 
 class WriteScreen extends ConsumerStatefulWidget {
@@ -25,11 +28,11 @@ class WriteScreenState extends ConsumerState<WriteScreen> {
   ];
 
   final _emojisMean = {
-    "\u{1F601}": "행복했던",
-    "\u{1F60A}": "즐거웠던",
-    "\u{1F60C}": "평범했던",
-    "\u{1F61E}": "우울했던",
-    "\u{1F621}": "화났던",
+    "\u{1F601}": "행복한",
+    "\u{1F60A}": "즐거운",
+    "\u{1F60C}": "보통인",
+    "\u{1F61E}": "우울한",
+    "\u{1F621}": "화난",
   };
 
   int _isSelectIndex = 0;
@@ -88,6 +91,31 @@ class WriteScreenState extends ConsumerState<WriteScreen> {
               ),
             ),
           ),
+          // ElevatedButton(
+          //     onPressed: () {
+          //       showCupertinoDialog(
+          //         context: context,
+          //         builder: (context) => CupertinoAlertDialog(
+          //           title: const Text("Are you sure?"),
+          //           // content: const Text("Plx dont go"),
+          //           actions: [
+          //             CupertinoDialogAction(
+          //               onPressed: () => Navigator.of(context).pop(),
+          //               child: const Text("No"),
+          //             ),
+          //             CupertinoDialogAction(
+          //               onPressed: () {
+          //                 ref.read(authRepoProvider).signOut();
+          //                 context.go("/signin");
+          //               },
+          //               isDestructiveAction: true,
+          //               child: const Text("Yes"),
+          //             ),
+          //           ],
+          //         ),
+          //       );
+          //     },
+          //     child: const Text("Log out"))
         ],
         elevation: 0.2,
         shadowColor: Colors.grey.shade700,
@@ -101,7 +129,7 @@ class WriteScreenState extends ConsumerState<WriteScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "오늘 하루 나의 기분은?",
+              "오늘 하루 나의 표정",
               style: Theme.of(context).textTheme.titleMedium!.copyWith(
                     fontSize: 20,
                   ),
@@ -152,7 +180,6 @@ class WriteScreenState extends ConsumerState<WriteScreen> {
                 itemCount: 5,
               ),
             ),
-            //횡스크롤 가능한 정사각형 박스 만들어서 그 안에 이모지 넣기
             //wirte 버튼 누르면 자동으로 키보드 올라오기
             //write 들어오면 텍스트필드 자동 활성화
             //스캐폴드 터치하면 키보드 내려가게
@@ -165,15 +192,17 @@ class WriteScreenState extends ConsumerState<WriteScreen> {
                 left: 20,
               ),
               child: TextField(
+                // autofocus: true, wirte 탭이 눌렸을때만 키보드 올라오게 수정
                 controller: _textEditingController,
                 decoration: InputDecoration(
                   hintText:
-                      "오늘 내가 ${_emojisMean.values.toList()[_isSelectIndex]} 이유는?",
+                      "기분이 ${_emojisMean.values.toList()[_isSelectIndex]} 이유는?",
                   border: InputBorder.none,
                   contentPadding: const EdgeInsets.symmetric(
                     vertical: -20,
                   ),
                 ),
+                cursorColor: Theme.of(context).colorScheme.secondary,
               ),
             ),
           ],

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sns_clone/authentication/repos/authentication_repo.dart';
+import 'package:sns_clone/post/views/post_time_line_screen.dart';
 import 'package:sns_clone/write/views/write_screen.dart';
 
 class MainNavigationScreen extends ConsumerStatefulWidget {
@@ -30,7 +30,7 @@ class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
   late int _selectedIndex = _tabs.indexOf(widget.tab);
 
   void _onTap(int index) {
-    context.go("/${_tabs[index]}");
+    // context.go("/${_tabs[index]}");
     setState(() {});
     _selectedIndex = index;
   }
@@ -40,16 +40,14 @@ class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
     return Scaffold(
       appBar: _selectedIndex == 0
           ? AppBar(
-              // actions: [
-              //   IconButton(
-              //     onPressed: () => ref
-              //         .read(darkmodeConfigProvider.notifier)
-              //         .setDarked(!ref.watch(darkmodeConfigProvider).dark),
-              //     icon: ref.watch(darkmodeConfigProvider).dark
-              //         ? const FaIcon(FontAwesomeIcons.moon)
-              //         : const FaIcon(FontAwesomeIcons.sun),
-              //   ),
-              // ],
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    context.push("/setting");
+                  },
+                  icon: const FaIcon(FontAwesomeIcons.gear),
+                ),
+              ],
               title: const Text("🔥MOOD🔥"),
               elevation: 0,
               // backgroundColor: Theme.of(context).colorScheme.onPrimary,
@@ -58,43 +56,7 @@ class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
       body: Stack(
         children: [
           Offstage(
-            offstage: _selectedIndex != 0,
-            child: Scaffold(
-              body: Center(
-                child: Column(
-                  children: [
-                    const Text("Home"),
-                    ElevatedButton(
-                      onPressed: () {
-                        showCupertinoDialog(
-                          context: context,
-                          builder: (context) => CupertinoAlertDialog(
-                            title: const Text("Are you sure?"),
-                            // content: const Text("Plx dont go"),
-                            actions: [
-                              CupertinoDialogAction(
-                                onPressed: () => Navigator.of(context).pop(),
-                                child: const Text("No"),
-                              ),
-                              CupertinoDialogAction(
-                                onPressed: () {
-                                  ref.read(authRepoProvider).signOut();
-                                  context.go("/signin");
-                                },
-                                isDestructiveAction: true,
-                                child: const Text("Yes"),
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                      child: const Text("Log out"),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
+              offstage: _selectedIndex != 0, child: const PostTimeLineScreen()),
           Offstage(
             offstage: _selectedIndex != 1,
             child: const WriteScreen(),

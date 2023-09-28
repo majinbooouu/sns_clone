@@ -4,6 +4,7 @@ import 'package:sns_clone/authentication/repos/authentication_repo.dart';
 import 'package:sns_clone/authentication/views/sign_in_screen.dart';
 import 'package:sns_clone/authentication/views/sign_up_screen.dart';
 import 'package:sns_clone/commons/views/main_navigation_screen.dart';
+import 'package:sns_clone/setting/views/setting_screen.dart';
 
 final routerProvider = Provider(
   (ref) {
@@ -38,6 +39,11 @@ final routerProvider = Provider(
             final tab = state.params["tab"]!;
             return MainNavigationScreen(tab: tab);
           },
+        ),
+        GoRoute(
+          path: SettingScreen.routeURL,
+          name: SettingScreen.routeName,
+          builder: (context, state) => const SettingScreen(),
         ),
       ],
     );
