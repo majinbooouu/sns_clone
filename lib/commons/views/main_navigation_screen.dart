@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+
 import 'package:sns_clone/post/views/post_time_line_screen.dart';
 import 'package:sns_clone/write/views/write_screen.dart';
 
@@ -30,7 +30,6 @@ class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
   late int _selectedIndex = _tabs.indexOf(widget.tab);
 
   void _onTap(int index) {
-    // context.go("/${_tabs[index]}");
     setState(() {});
     _selectedIndex = index;
   }
@@ -40,6 +39,7 @@ class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
     return Scaffold(
       appBar: _selectedIndex == 0
           ? AppBar(
+              centerTitle: true,
               actions: [
                 IconButton(
                   onPressed: () {
@@ -56,10 +56,12 @@ class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
       body: Stack(
         children: [
           Offstage(
-              offstage: _selectedIndex != 0, child: const PostTimeLineScreen()),
+            offstage: _selectedIndex != 0,
+            child: const PostTimeLineScreen(),
+          ),
           Offstage(
             offstage: _selectedIndex != 1,
-            child: const WriteScreen(),
+            child: WriteScreen(onTapCallback: _onTap),
           ),
         ],
       ),

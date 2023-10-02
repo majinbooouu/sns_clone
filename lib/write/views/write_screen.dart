@@ -1,13 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import 'package:sns_clone/authentication/repos/authentication_repo.dart';
 import 'package:sns_clone/write/view_models/write_view_model.dart';
 
 class WriteScreen extends ConsumerStatefulWidget {
+  final void Function(int) onTapCallback;
+
   const WriteScreen({
     super.key,
+    required this.onTapCallback,
   });
 
   @override
@@ -55,12 +55,14 @@ class WriteScreenState extends ConsumerState<WriteScreen> {
   }
 
   void onNextPressed() async {
-    ref.read(writePostProvider.notifier).uploadPost(
+    await ref.read(writePostProvider.notifier).uploadPost(
           _textEditingController.text,
           _isSelectIndex,
-          context,
         );
 
+    widget.onTapCallback(0);
+    _textEditingController.text = "";
+    _isSelectIndex = 0;
     // Navigator.of(context).pop(
     //   MainNavigationScreen.routeName,
     // );
@@ -87,35 +89,10 @@ class WriteScreenState extends ConsumerState<WriteScreen> {
                     ),
                   )),
               child: const Text(
-                "Next",
+                "게시하기",
               ),
             ),
           ),
-          // ElevatedButton(
-          //     onPressed: () {
-          //       showCupertinoDialog(
-          //         context: context,
-          //         builder: (context) => CupertinoAlertDialog(
-          //           title: const Text("Are you sure?"),
-          //           // content: const Text("Plx dont go"),
-          //           actions: [
-          //             CupertinoDialogAction(
-          //               onPressed: () => Navigator.of(context).pop(),
-          //               child: const Text("No"),
-          //             ),
-          //             CupertinoDialogAction(
-          //               onPressed: () {
-          //                 ref.read(authRepoProvider).signOut();
-          //                 context.go("/signin");
-          //               },
-          //               isDestructiveAction: true,
-          //               child: const Text("Yes"),
-          //             ),
-          //           ],
-          //         ),
-          //       );
-          //     },
-          //     child: const Text("Log out"))
         ],
         elevation: 0.2,
         shadowColor: Colors.grey.shade700,
@@ -194,6 +171,7 @@ class WriteScreenState extends ConsumerState<WriteScreen> {
               child: TextField(
                 // autofocus: true, wirte 탭이 눌렸을때만 키보드 올라오게 수정
                 controller: _textEditingController,
+                maxLines: 6,
                 decoration: InputDecoration(
                   hintText:
                       "기분이 ${_emojisMean.values.toList()[_isSelectIndex]} 이유는?",

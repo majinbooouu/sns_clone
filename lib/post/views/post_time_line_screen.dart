@@ -8,18 +8,13 @@ class PostTimeLineScreen extends ConsumerStatefulWidget {
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _PostTimeLineScreenState();
+      PostTimeLineScreenState();
 }
 
-class _PostTimeLineScreenState extends ConsumerState<PostTimeLineScreen> {
-  @override
-  void rebuild() {
-    setState(() {});
-  }
-
+class PostTimeLineScreenState extends ConsumerState<PostTimeLineScreen> {
   @override
   Widget build(BuildContext context) {
-    return ref.watch(postProvider).when(
+    return ref.watch(postStreamProvider).when(
           data: (data) => Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 15,
@@ -43,3 +38,12 @@ class _PostTimeLineScreenState extends ConsumerState<PostTimeLineScreen> {
         );
   }
 }
+
+// final rebuildProvider = Provider<void Function()>(
+//   (ref) => () {
+//     // UI를 업데이트하고 상태를 갱신하는 작업 수행
+//     ref.read(postProvider.notifier).build();
+//     // postProvider를 읽어서 새로운 데이터를 가져오거나 업데이트할 수 있음
+//     print("object");
+//   },
+// );
